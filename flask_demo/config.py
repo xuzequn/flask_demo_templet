@@ -1,3 +1,4 @@
+# coding=utf-8
 import os
 basedir = os.path.abspath(os.path.dirname(__name__))
 
@@ -19,19 +20,19 @@ class Config:
     def init_app(app):
         pass
 
-#开发环境
+# 开发环境
 class DevelopmentConfig(Config):
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL') or \
                               'sqlite:///' + os.path.join(basedir , 'data-dev.sqlite')
 
-#测试环境
+# 测试环境
 class TestingConfig(Config):
     TESTING = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URL') or \
                               'sqlite:///' + os.path.join(basedir , 'data-test.sqlite')
 
-#生产环境
+# 生产环境
 class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
                               'sqlite:///' + os.path.join(basedir , 'data.sqlite')
